@@ -1,5 +1,5 @@
 import sqlite3
-import catat as catat
+import transaksi as catat
 import jenislaundry as jenislaundry
 from datetime import datetime
 saat_ini = datetime.now()
@@ -60,5 +60,5 @@ def deletejenis():
 # conn.commit()
 
 # insertjenis()
-# deletejenis()
+deletejenis()
 conn.close()

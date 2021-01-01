@@ -1,4 +1,4 @@
-import catat as catat
+import transaksi as catat
 import programdb as programdb
 
 coba1 = catat.Catat("1", 2, 2, 2, 5)
