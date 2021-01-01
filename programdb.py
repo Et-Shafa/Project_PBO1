@@ -1,14 +1,10 @@
 import sqlite3
 import transaksi as catat
 import jenislaundry as jenislaundry
-from datetime import datetime
-saat_ini = datetime.now()
-tgl = saat_ini.strftime('%d/%m/%Y')  # format dd/mm/YY
-print('Tanggal:', tgl)
 
 db = "laundryin.db"
 
-# * connect ke databse
+# * connect ke database
 conn = sqlite3.connect(db)
 
 
@@ -25,12 +21,12 @@ def insertjenis():
     conn.commit()
 
 
-# def updatejenis():
+# def updatejenis(): xxxxxxxxx
 #     inama = input("Nama data barang yang ingin di update : ")
 #     iharga = int(input("Harga baru : "))
 #     # barang1 = item.Barang(inama, iharga)
 #     conn.execute(
-#         "UPDATE barang set harga = ?  WHERE nama_barang = ?", (iharga, inama))
+#         "UPDATE jeniscuci set harga = ?  WHERE nama_barang = ?", (iharga, inama))
 #     conn.commit()
 
 
@@ -40,6 +36,11 @@ def deletejenis():
     conn.execute("DELETE FROM jeniscuci WHERE idjeniscuci = ?",
                  (ask, ))
     conn.commit()
+
+def viewjenis():
+    cursor = conn.cursor().execute("select * from jeniscuci")
+    for row in cursor:
+        print(f'{row[0]} | {row[1]} | {row[2]}')
 
 
 # def read():
@@ -60,5 +61,7 @@ def deletejenis():
 # conn.commit()
 
 # insertjenis()
-deletejenis()
-conn.close()
+# updatejenis() xxxxxxx
+# deletejenis()
+# viewjenis()
+# conn.close()
