@@ -8,17 +8,31 @@ db = "laundryin.db"
 conn = sqlite3.connect(db)
 
 
-def insertjenis():
-    askid = input("ID Jenis : ")
-    askjenis = input("Jenis : ")
-    askhargajenis = input("Harga Jenis : ")
-    injenis = jenislaundry.Tipe(askid, askjenis, askhargajenis)
+def viewjenis():
+    cursor = conn.cursor().execute("select * from jeniscuci")
+    for row in cursor:
+        print(f'{row[0]} | {row[1]} | {row[2]}')
+
+
+def insertjenis(id, jenis, harga):
+    # askid = input("ID Jenis : ")
+    # askjenis = input("Jenis : ")
+    # askhargajenis = input("Harga Jenis : ")
+    # injenis = jenislaundry.Tipe(askid, askjenis, askhargajenis)
     res = conn.execute(
-        "select * from jeniscuci where idjeniscuci = ? or jenis = ?", (injenis.getidjenis, injenis.getjenis))
+        "select * from jeniscuci where idjeniscuci = ? or jenis = ?", (id, jenis))
     if res.fetchone() is None:
-        conn.execute("insert into jeniscuci values (?,?,?)",
-                     (injenis.getidjenis, injenis.getjenis, injenis.gethargajenis))
+        conn.execute("insert into jeniscuci values (?,?,?)", (id, jenis, harga))
     conn.commit()
+
+
+def deletejenis():
+    ask = input("ID Jenis laundry : ")
+    # dltjenis = jenislaundry.Tipe()
+    conn.execute("DELETE FROM jeniscuci WHERE idjeniscuci = ?",
+                 (ask, ))
+    conn.commit()
+
 
 
 # def updatejenis(): xxxxxxxxx
@@ -30,17 +44,7 @@ def insertjenis():
 #     conn.commit()
 
 
-def deletejenis():
-    ask = input("ID Jenis laundry : ")
-    # dltjenis = jenislaundry.Tipe()
-    conn.execute("DELETE FROM jeniscuci WHERE idjeniscuci = ?",
-                 (ask, ))
-    conn.commit()
 
-def viewjenis():
-    cursor = conn.cursor().execute("select * from jeniscuci")
-    for row in cursor:
-        print(f'{row[0]} | {row[1]} | {row[2]}')
 
 
 # def read():
@@ -61,7 +65,6 @@ def viewjenis():
 # conn.commit()
 
 # insertjenis()
-# updatejenis() xxxxxxx
 # deletejenis()
 # viewjenis()
 # conn.close()

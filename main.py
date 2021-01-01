@@ -1,4 +1,5 @@
 import transaksi as catat
+import jenislaundry as jenisLaundry
 import programdb as programdb
 from datetime import datetime as dt
 
@@ -54,11 +55,14 @@ print("""\t 4. Jenis Laundry
 jenis = input("pilihan : ")
 if jenis == '1':
     programdb.viewjenis()
-    programdb.conn.close()
 elif jenis == '2':
-    programdb.insertjenis()
+    askid = input("ID Jenis : ")
+    askjenis = input("Jenis : ")
+    askhargajenis = input("Harga Jenis : ")
+    injenis = jenisLaundry.Tipe(askid, askjenis, askhargajenis)
+    programdb.insertjenis(injenis.getidjenis, injenis.getjenis, injenis.gethargajenis)
 else:
     programdb.deletejenis()
 
-
+programdb.conn.close()
 
