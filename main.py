@@ -1,5 +1,5 @@
 import transaksi as catat
-import pelanggan
+import pelanggan as pelanggan
 import jenislaundry as jenisLaundry
 import programdb as programdb
 from datetime import datetime as dt
@@ -11,10 +11,8 @@ while Start:
 \t Laundry.in
 --------------------------------
 1. Catat transaksi
-2. Lihat riwayat transaksi
-3. Jenis laundry
-4. Rekap data
-5. Selesai
+2. Jenis laundry
+3. Selesai
 """)
     ask = input("Pilihan : ")
     if ask == "1":
@@ -123,21 +121,6 @@ Tambah ?
                 pass
 
     elif ask == "3":
-        print("""
-\t 2. Lihat riwayat transaksi
---------------------------------
-1. Mingguan
-2. Bulanan
-3. Tahunan
-""")
-        pass
-
-
-
-    elif ask == "4":
-            pass
-
-    elif ask == "5":
         Start = False
     else:
         pass
