@@ -1,4 +1,5 @@
 import transaksi as catat
+import pelanggan
 import jenislaundry as jenisLaundry
 import programdb as programdb
 from datetime import datetime as dt
@@ -7,8 +8,8 @@ from datetime import datetime as dt
 #
 # saat_ini = dt.now()
 # tgl = saat_ini.strftime('%d-%m-%Y')  # format dd/mm/YY
-# # print('Tanggal:', tgl)
-# print(type(tgl))
+# print('Tanggal:', saat_ini)
+# print(type(saat_ini))
 #
 #
 # tgl_text = '27-07-2005'
@@ -31,16 +32,20 @@ from datetime import datetime as dt
 # 5. Rekap data
 # """)
 
-# print("""\t 1. Catat transaksi
-# --------------------------------
-nama = input("Nama : ")
-nohp = input("Nomor HP : ")
-tglselesai = input("Tanggal Selesai : ")
-jumlahpakaian = input("Jumlah Pakaian : ")
-transaksi = catat.Catat(nama, nohp, tglselesai, jumlahpakaian)
-programdb.inserttra(transaksi.getnama, transaksi.getnohp, transaksi.getjumlahpakaian)
+print("""\t 1. Catat transaksi
+--------------------------------
+""")
+# nama = input("Nama : ")
+# nohp = input("Nomor HP : ")
+# email = input("Email : ")
+#
+# pelanggan = pelanggan.Pelanggan(nama, nohp, email)
+# programdb.insertpelanggan(pelanggan.getnama, pelanggan.getnohp, pelanggan.getemail)
 
-# """)
+# tglterima = dt.now()
+# tglselesai = input("Tanggal Selesai : ")
+# jumlahpakaian = input("Jumlah Pakaian : ")
+# tglselesai = dt.strptime(tglselesai, '%d-%m-%Y')
 
 # print("""\t 2. Lihat riwayat transaksi
 # --------------------------------

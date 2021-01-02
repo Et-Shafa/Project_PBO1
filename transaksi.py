@@ -1,42 +1,8 @@
 class Catat:
 
-    def __init__(self, nama, nohp, tglselesai, jumlahpakaian):
-        self.nama = nama
-        self.__nohp = nohp
+    def __init__(self, tglselesai, jumlahpakaian):
         self.tglselesai = tglselesai
         self.jumlahpakaian = jumlahpakaian
-
-    @property
-    def setnama(self):
-        pass
-
-    @property
-    def getnama(self):
-        pass
-
-    @setnama.setter
-    def setnama(self, input):
-        self.nama = input
-
-    @getnama.getter
-    def getnama(self):
-        return self.nama
-
-    @property
-    def setnohp(self):
-        pass
-
-    @property
-    def getnohp(self):
-        pass
-
-    @setnohp.setter
-    def setnohp(self, input):
-        self.__nohp = input
-
-    @getnohp.getter
-    def getnohp(self):
-        return self.__nohp
 
     @property
     def settglselesai(self):
@@ -50,7 +16,7 @@ class Catat:
     def settglselesai(self, input):
         self.tglselesai = input
 
-    @getnohp.getter
+    @gettglselesai.getter
     def gettglselesai(self):
         return self.tglselesai
 

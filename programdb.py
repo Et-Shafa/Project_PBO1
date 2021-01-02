@@ -26,12 +26,18 @@ def deletejenis(iddlt):
     conn.execute("DELETE FROM jeniscuci WHERE idjeniscuci = ?", (iddlt, ))
     conn.commit()
 
+def insertpelanggan(nama, nohp, email):
+    res = conn.execute(
+        "select * from pelanggan where nama = ?", (nama, ))
+    if res.fetchone() is None:
+        conn.execute("insert into pelanggan values (? , ?, ?, ?)", (None, nama, nohp, email))
+    conn.commit()
 
-def inserttra(nama, nohp, tglterima, tglselesai, idjenis, jumlahberatjenis, totalhargajenis, totalpakaian, totalharga):
+def inserttra(idpelanggan, tglterima, tglselesai, idjenis, jumlahberatjenis, totalhargajenis, totalpakaian, totalharga):
     res = conn.execute(
         "select * from transaksi where idjeniscuci = ? or jenis = ?", (id, jenis))
     if res.fetchone() is None:
-        conn.execute("insert into transaksi values (?,?,?,?,?,?,?,?,?,?)", ("", nama, nohp, tglterima, tglselesai, idjenis, jumlahberatjenis, totalhargajenis, totalpakaian, totalharga))
+        conn.execute("insert into transaksi values (?, ?, ?,?,?,?,?,?,?,?,?)", ("", nama, nohp, email, tglterima, tglselesai, idjenis, jumlahberatjenis, totalhargajenis, totalpakaian, totalharga))
     conn.commit()
 
 # def updatejenis(): xxxxxxxxx
