@@ -44,8 +44,8 @@ def gethargajenis(idjenis):
         return (f'{row[2]}')
 
 
-def inserttra(idpelanggan, tglterima, tglselesai, idjenis, jumlahberatjenis, totalhargajenis, totalpakaian):
-    conn.execute("insert into transaksi values (?, ?, ?, ?, ?, ?, ?, ?)", (None, idpelanggan, tglterima, tglselesai, idjenis, jumlahberatjenis, totalhargajenis, totalpakaian))
+def inserttra(idpelanggan, tglterima, tglselesai, totalpakaian, idjenis, jumlahberatjenis, totalhargajenis):
+    conn.execute("insert into transaksi values (?, ?, ?, ?, ?, ?, ?, ?)", (None, idpelanggan, tglterima, tglselesai, totalpakaian, idjenis, jumlahberatjenis, totalhargajenis))
     conn.commit()
 
 # def updatejenis(): xxxxxxxxx

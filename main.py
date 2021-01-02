@@ -4,75 +4,105 @@ import jenislaundry as jenisLaundry
 import programdb as programdb
 from datetime import datetime as dt
 
+Start = True
 
-#
-# saat_ini = dt.now()
-# tgl = saat_ini.strftime('%d-%m-%Y')  # format dd/mm/YY
-# print('Tanggal:', saat_ini)
-# print(type(saat_ini))
-#
-#
-# tgl_text = '27-07-2005'
-# print(tgl_text, type(tgl_text))  # tipe data str
-# tgl_date = dt.strptime(tgl_text, '%d-%m-%Y')  # konversi string ke date dengan format tertentu
-# print(tgl_date, type(tgl_date))
-#
-#
-# coba1 = catat.Catat("1", 2, 2, 2, 5)
-#
-# cetak = coba1.hargatotal()
-# print(coba1.hargatotal())
-
-# print("""\t Laundry.in
-# --------------------------------
-# 1. Catat transaksi
-# 2. Lihat riwayat transaksi
-# 3. Cetak nota
-# 4. Jenis laundry
-# 5. Rekap data
-# """)
-
-print("""\t 1. Catat transaksi
+while Start:
+    print("""\t Laundry.in
+--------------------------------
+1. Catat transaksi
+2. Lihat riwayat transaksi
+3. Cetak nota
+4. Jenis laundry
+5. Rekap data
+6. Selesai
+""")
+    ask = input("Pilihan : ")
+    if ask == "1":
+        startone = True
+        while startone:
+            print("""\t 1. Catat transaksi
 --------------------------------
 1. Tambah pelanggan
 2. Lihat pelanggan
-4. Transaksi
+3. Transaksi
+4. Menu utama
 """)
-pilih = input("Pilihan: ")
-if pilih == "1":
-    nama = input("Nama : ")
-    nohp = input("Nomor HP : ")
-    email = input("Email : ")
-    pelanggan = pelanggan.Pelanggan(nama, nohp, email)
-    programdb.insertpelanggan(pelanggan.getnama, pelanggan.getnohp, pelanggan.getemail)
-elif pilih == "2":
-    programdb.viewpelanggan()
-else:
-    idpelanggan = input("ID Pelanggan : ")
-    tglterima = dt.now()
-    tglselesai = input("Tanggal Selesai : ")
-    tglselesai = dt.strptime(tglselesai, '%d-%m-%Y')
-    totalpakaian = input("Total pakaian : ")
-
-    tambah = True
-    while tambah:
-        programdb.viewjenis()
-        idjenis = input("ID Jenis : ")
-        jumlahberat = input("Jumlah berat : ")
-        hargajenis = programdb.gethargajenis(idjenis)
-        totalhargajenis = catat.Catat.totalhargajenis(1, jumlahberat, int(hargajenis))
-        print(""""
+            pilih = input("Pilihan: ")
+            if pilih == "1":
+                nama = input("Nama : ")
+                nohp = input("Nomor HP : ")
+                email = input("Email : ")
+                pelanggan = pelanggan.Pelanggan(nama, nohp, email)
+                programdb.insertpelanggan(pelanggan.getnama, pelanggan.getnohp, pelanggan.getemail)
+            elif pilih == "2":
+                programdb.viewpelanggan()
+            elif pilih == "3":
+                idpelanggan = input("ID Pelanggan : ")
+                tglterima = dt.now()
+                tglselesai = input("Tanggal Selesai : ")
+                tglselesai = dt.strptime(tglselesai, '%d-%m-%Y')
+                totalpakaian = input("Total pakaian : ")
+                tambah = True
+                while tambah:
+                    programdb.viewjenis()
+                    idjenis = input("ID Jenis : ")
+                    jumlahberat = int(input("Jumlah berat : "))
+                    hargajenis = int(programdb.gethargajenis(idjenis))
+                    totalhargajenis = catat.Catat.totalhargajenis(1, jumlahberat, hargajenis)
+                    print(totalhargajenis)
+                    print(""""
 Tambah ?
 \t 1. Ya
 \t 2. Tidak""")
-        tran = catat.Catat(tglselesai, totalpakaian)
-        programdb.inserttra(idpelanggan, tglterima, tran.gettglselesai, idjenis, jumlahberat,
-                            totalhargajenis, jumlahberat)
-        pilihan = input("Pilihan : ")
-        if pilihan == "1":
-            pass
+                    tran = catat.Catat(tglselesai, totalpakaian)
+                    programdb.inserttra(idpelanggan, tglterima, tran.gettglselesai, tran.getjumlahpakaian, idjenis,
+                                        jumlahberat, totalhargajenis)
+                    pilihan = input("Pilihan : ")
+                    if pilihan == "1":
+                        pass
+                    else:
+                        tambah = False
+            elif pilih == "4":
+                startone = False
+            else:
+                pass
+
+    elif ask == "2":
+        pass
+
+    elif ask == "3":
+        pass
+
+    elif ask == "4":
+        print("""\t 4. Jenis Laundry
+        --------------------------------
+        1. Lihat jenis
+        2. Tambahkan jenis
+        3. Hapus jenis
+        """)
+
+        jenis = input("pilihan : ")
+        if jenis == '1':
+            programdb.viewjenis()
+        elif jenis == '2':
+            askid = input("ID Jenis : ")
+            askjenis = input("Jenis : ")
+            askhargajenis = input("Harga Jenis : ")
+            injenis = jenisLaundry.Tipe(askid, askjenis, askhargajenis)
+            programdb.insertjenis(injenis.getidjenis, injenis.getjenis, injenis.gethargajenis)
         else:
-            tambah = False
+            ask = input("ID Jenis laundry : ")
+            askid = jenisLaundry.Tipe(ask, "", "")
+            programdb.deletejenis(askid.getidjenis)
+
+    elif ask == "5":
+            pass
+
+    elif ask == "6":
+        Start = False
+
+    else:
+        pass
 
 
 # # print(tglselesai)
@@ -88,26 +118,7 @@ Tambah ?
 # 3. Tahunan
 # """)
 
-# print("""\t 4. Jenis Laundry
-# --------------------------------
-# 1. Lihat jenis
-# 2. Tambahkan jenis
-# 3. Hapus jenis
-# """)
-#
-# jenis = input("pilihan : ")
-# if jenis == '1':
-#     programdb.viewjenis()
-# elif jenis == '2':
-#     askid = input("ID Jenis : ")
-#     askjenis = input("Jenis : ")
-#     askhargajenis = input("Harga Jenis : ")
-#     injenis = jenisLaundry.Tipe(askid, askjenis, askhargajenis)
-#     programdb.insertjenis(injenis.getidjenis, injenis.getjenis, injenis.gethargajenis)
-# else:
-#     ask = input("ID Jenis laundry : ")
-#     askid = jenisLaundry.Tipe(ask, "", "")
-#     programdb.deletejenis(askid.getidjenis)
+
 
 
 
