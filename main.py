@@ -36,7 +36,7 @@ print("""\t 1. Catat transaksi
 --------------------------------
 1. Tambah pelanggan
 2. Lihat pelanggan
-3. Transaksi
+4. Transaksi
 """)
 pilih = input("Pilihan: ")
 if pilih == "1":
@@ -53,27 +53,26 @@ else:
     tglselesai = input("Tanggal Selesai : ")
     tglselesai = dt.strptime(tglselesai, '%d-%m-%Y')
     totalpakaian = input("Total pakaian : ")
+
     tambah = True
     while tambah:
+        programdb.viewjenis()
         idjenis = input("ID Jenis : ")
         jumlahberat = input("Jumlah berat : ")
+        hargajenis = programdb.gethargajenis(idjenis)
+        totalhargajenis = catat.Catat.totalhargajenis(1, jumlahberat, int(hargajenis))
         print(""""
 Tambah ?
 \t 1. Ya
 \t 2. Tidak""")
+        tran = catat.Catat(tglselesai, totalpakaian)
+        programdb.inserttra(idpelanggan, tglterima, tran.gettglselesai, idjenis, jumlahberat,
+                            totalhargajenis, jumlahberat)
         pilihan = input("Pilihan : ")
         if pilihan == "1":
             pass
         else:
             tambah = False
-
-    tran = catat.Catat(tglselesai, totalpakaian)
-    programdb.inserttra(idpelanggan, tglterima, tran.gettglselesai, idjenis, jumlahberat, )
-
-
-
-
-
 
 
 # # print(tglselesai)

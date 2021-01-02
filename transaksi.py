@@ -36,14 +36,14 @@ class Catat:
     def getjumlahpakaian(self):
         return self.jumlahpakaian
 
-    def totalhargajenis(self, jenis, hargajenis, totalharga):
-        totalharga = jenis*hargajenis
+    def totalhargajenis(self, beratjenis, harga):
+        totalharga = beratjenis*harga
         return totalharga
         # jenis = jenislaundry.Tipe.getjenis
         # hargajenis = jenislaundry.Tipe.gethargajenis
 
-    def hargatotal(self, hargajenis):
-        return hargajenis
+    # def hargatotal(self, hargajenis):
+    #     return hargajenis
 
 
 # class Nota(Catat):
