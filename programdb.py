@@ -33,11 +33,13 @@ def insertpelanggan(nama, nohp, email):
         conn.execute("insert into pelanggan values (? , ?, ?, ?)", (None, nama, nohp, email))
     conn.commit()
 
+def viewpelanggan():
+    cursor = conn.cursor().execute("select * from pelanggan")
+    for row in cursor:
+        print(f'{row[0]} | {row[1]} | {row[2]} | {row[3]}')
+
 def inserttra(idpelanggan, tglterima, tglselesai, idjenis, jumlahberatjenis, totalhargajenis, totalpakaian, totalharga):
-    res = conn.execute(
-        "select * from transaksi where idjeniscuci = ? or jenis = ?", (id, jenis))
-    if res.fetchone() is None:
-        conn.execute("insert into transaksi values (?, ?, ?,?,?,?,?,?,?,?,?)", ("", nama, nohp, email, tglterima, tglselesai, idjenis, jumlahberatjenis, totalhargajenis, totalpakaian, totalharga))
+    conn.execute("insert into transaksi values (?, ?, ?, ?, ?, ?, ?, ?, ?)", ("", idpelanggan, tglterima, tglselesai, idjenis, jumlahberatjenis, totalhargajenis, totalpakaian, totalharga))
     conn.commit()
 
 # def updatejenis(): xxxxxxxxx

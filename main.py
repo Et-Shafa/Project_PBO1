@@ -34,18 +34,53 @@ from datetime import datetime as dt
 
 print("""\t 1. Catat transaksi
 --------------------------------
+1. Tambah pelanggan
+2. Lihat pelanggan
+3. Transaksi
 """)
-# nama = input("Nama : ")
-# nohp = input("Nomor HP : ")
-# email = input("Email : ")
-#
-# pelanggan = pelanggan.Pelanggan(nama, nohp, email)
-# programdb.insertpelanggan(pelanggan.getnama, pelanggan.getnohp, pelanggan.getemail)
+pilih = input("Pilihan: ")
+if pilih == "1":
+    nama = input("Nama : ")
+    nohp = input("Nomor HP : ")
+    email = input("Email : ")
+    pelanggan = pelanggan.Pelanggan(nama, nohp, email)
+    programdb.insertpelanggan(pelanggan.getnama, pelanggan.getnohp, pelanggan.getemail)
+elif pilih == "2":
+    programdb.viewpelanggan()
+else:
+    idpelanggan = input("ID Pelanggan : ")
+    tglterima = dt.now()
+    tglselesai = input("Tanggal Selesai : ")
+    tglselesai = dt.strptime(tglselesai, '%d-%m-%Y')
+    totalpakaian = input("Total pakaian : ")
+    tambah = True
+    while tambah:
+        idjenis = input("ID Jenis : ")
+        jumlahberat = input("Jumlah berat : ")
+        print(""""
+Tambah ?
+\t 1. Ya
+\t 2. Tidak""")
+        pilihan = input("Pilihan : ")
+        if pilihan == "1":
+            pass
+        else:
+            tambah = False
 
-# tglterima = dt.now()
-# tglselesai = input("Tanggal Selesai : ")
-# jumlahpakaian = input("Jumlah Pakaian : ")
-# tglselesai = dt.strptime(tglselesai, '%d-%m-%Y')
+    tran = catat.Catat(tglselesai, totalpakaian)
+    programdb.inserttra(idpelanggan, tglterima, tran.gettglselesai, idjenis, jumlahberat, )
+
+
+
+
+
+
+
+# # print(tglselesai)
+# # print(type(tglselesai))
+# totalpakaian = input("Jumlah Pakaian : ")
+# jumlahberatjenis = input("Jumlah berat : ")
+
 
 # print("""\t 2. Lihat riwayat transaksi
 # --------------------------------
