@@ -1,6 +1,4 @@
 import sqlite3
-import transaksi as catat
-import jenislaundry as jenislaundry
 
 db = "laundryin.db"
 
@@ -38,6 +36,11 @@ def viewpelanggan():
     for row in cursor:
         print(f'{row[0]} | {row[1]} | {row[2]} | {row[3]}')
 
+def getdatapelanggan(idpelanggan, index):
+    cursor = conn.cursor().execute("select * from pelanggan where idpelanggan = ?", (idpelanggan, ))
+    for row in cursor:
+        return (f'{row[index]}')
+
 def gethargajenis(idjenis):
     cursor = conn.cursor().execute("select * from jeniscuci where idjeniscuci = ?", (idjenis, ))
     for row in cursor:
@@ -47,6 +50,11 @@ def gethargajenis(idjenis):
 def inserttra(idpelanggan, tglterima, tglselesai, totalpakaian, idjenis, jumlahberatjenis, totalhargajenis):
     conn.execute("insert into transaksi values (?, ?, ?, ?, ?, ?, ?, ?)", (None, idpelanggan, tglterima, tglselesai, totalpakaian, idjenis, jumlahberatjenis, totalhargajenis))
     conn.commit()
+
+def gettransaksi():
+    cursor = conn.cursor().execute("select * from transaksi where ")
+    for row in cursor:
+        print(f'{row[0]} | {row[1]} | {row[2]}')
 
 # def updatejenis(): xxxxxxxxx
 #     inama = input("Nama data barang yang ingin di update : ")
