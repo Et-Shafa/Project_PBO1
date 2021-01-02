@@ -29,7 +29,7 @@ while tambah:
     arrhargajenis.append(hargajenis)
     arrjumlahberatj.append(jumlahberat)
     arrtotalhj.append(totalhargajenis)
-    total = total*totalhargajenis
+    total = total + totalhargajenis
     print(""""
 Tambah ?
 \t 1. Ya

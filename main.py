@@ -61,7 +61,7 @@ while Start:
                     arrhargajenis.append(hargajenis)
                     arrjumlahberatj.append(jumlahberat)
                     arrtotalhj.append(totalhargajenis)
-                    totalHarga = totalHarga*totalhargajenis
+                    totalHarga = totalHarga + totalhargajenis
                     print(""""
 Tambah ?
 \t 1. Ya
@@ -86,33 +86,23 @@ Tambah ?
     Jenis \t\t\t Harga jenis \t\t\t Total berat \t\t\t Total Harga jenis
     {} \t\t\t {} \t\t\t {} \t\t\t {}
     Total harga : {}
-                """.format(programdb.getdatapelanggan(idpelanggan, 1), programdb.getdatapelanggan(idpelanggan, 2), programdb.getdatapelanggan(idpelanggan, 3), tglterima, tglselesai, totalpakaian, arrjenis, arrhargajenis, arrjumlahberatj, arrhargajenis, totalHarga))
+                """.format(programdb.getdatapelanggan(idpelanggan, 1), programdb.getdatapelanggan(idpelanggan, 2), programdb.getdatapelanggan(idpelanggan, 3), tglterima, tglselesai, totalpakaian, arrjenis, arrhargajenis, arrjumlahberatj, arrtotalhj, totalHarga))
             elif pilih == "4":
                 startone = False
             else:
                 pass
 
     elif ask == "2":
-        print("""
-\t 2. Lihat riwayat transaksi
---------------------------------
-1. Mingguan
-2. Bulanan
-3. Tahunan
-""")
-        pass
-
-    elif ask == "3":
         fourstart = True
         while fourstart:
             print("""
-\t 4. Jenis Laundry
---------------------------------
-1. Lihat jenis
-2. Tambahkan jenis
-3. Hapus jenis
-4. Menu utama
-""")
+    \t 4. Jenis Laundry
+    --------------------------------
+    1. Lihat jenis
+    2. Tambahkan jenis
+    3. Hapus jenis
+    4. Menu utama
+    """)
 
             jenis = input("pilihan : ")
             if jenis == '1':
@@ -131,6 +121,18 @@ Tambah ?
                 fourstart = False
             else:
                 pass
+
+    elif ask == "3":
+        print("""
+\t 2. Lihat riwayat transaksi
+--------------------------------
+1. Mingguan
+2. Bulanan
+3. Tahunan
+""")
+        pass
+
+
 
     elif ask == "4":
             pass
