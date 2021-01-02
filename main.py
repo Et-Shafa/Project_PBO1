@@ -68,58 +68,53 @@ Tambah ?
                 pass
 
     elif ask == "2":
-        pass
-
-    elif ask == "3":
-        pass
-
-    elif ask == "4":
-        print("""\t 4. Jenis Laundry
-        --------------------------------
-        1. Lihat jenis
-        2. Tambahkan jenis
-        3. Hapus jenis
-        """)
-
-        jenis = input("pilihan : ")
-        if jenis == '1':
-            programdb.viewjenis()
-        elif jenis == '2':
-            askid = input("ID Jenis : ")
-            askjenis = input("Jenis : ")
-            askhargajenis = input("Harga Jenis : ")
-            injenis = jenisLaundry.Tipe(askid, askjenis, askhargajenis)
-            programdb.insertjenis(injenis.getidjenis, injenis.getjenis, injenis.gethargajenis)
-        else:
-            ask = input("ID Jenis laundry : ")
-            askid = jenisLaundry.Tipe(ask, "", "")
-            programdb.deletejenis(askid.getidjenis)
-
-    elif ask == "5":
-            pass
-
-    elif ask == "6":
-        Start = False
-
-    else:
-        pass
-
-
-# # print(tglselesai)
-# # print(type(tglselesai))
-# totalpakaian = input("Jumlah Pakaian : ")
-# jumlahberatjenis = input("Jumlah berat : ")
-
-
 # print("""\t 2. Lihat riwayat transaksi
 # --------------------------------
 # 1. Mingguan
 # 2. Bulanan
 # 3. Tahunan
 # """)
+        pass
 
+    elif ask == "3":
+        pass
 
+    elif ask == "4":
+        fourstart = True
+        while fourstart:
+            print("""\t 4. Jenis Laundry
+            --------------------------------
+            1. Lihat jenis
+            2. Tambahkan jenis
+            3. Hapus jenis
+            4. Menu utama
+            """)
 
+            jenis = input("pilihan : ")
+            if jenis == '1':
+                programdb.viewjenis()
+            elif jenis == '2':
+                askid = input("ID Jenis : ")
+                askjenis = input("Jenis : ")
+                askhargajenis = input("Harga Jenis : ")
+                injenis = jenisLaundry.Tipe(askid, askjenis, askhargajenis)
+                programdb.insertjenis(injenis.getidjenis, injenis.getjenis, injenis.gethargajenis)
+            elif jenis == '3':
+                ask = input("ID Jenis laundry : ")
+                askid = jenisLaundry.Tipe(ask, "", "")
+                programdb.deletejenis(askid.getidjenis)
+            elif jenis == '4':
+                fourstart = False
+            else:
+                pass
+
+    elif ask == "5":
+            pass
+
+    elif ask == "6":
+        Start = False
+    else:
+        pass
 
 
 programdb.conn.close()
