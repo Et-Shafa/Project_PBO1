@@ -33,8 +33,12 @@ from datetime import datetime as dt
 
 # print("""\t 1. Catat transaksi
 # --------------------------------
-
-
+nama = input("Nama : ")
+nohp = input("Nomor HP : ")
+tglselesai = input("Tanggal Selesai : ")
+jumlahpakaian = input("Jumlah Pakaian : ")
+transaksi = catat.Catat(nama, nohp, tglselesai, jumlahpakaian)
+programdb.inserttra(transaksi.getnama, transaksi.getnohp, transaksi.getjumlahpakaian)
 
 # """)
 
@@ -45,24 +49,28 @@ from datetime import datetime as dt
 # 3. Tahunan
 # """)
 
-print("""\t 4. Jenis Laundry
---------------------------------
-1. Lihat jenis
-2. Tambahkan jenis
-3. Hapus jenis
-""")
+# print("""\t 4. Jenis Laundry
+# --------------------------------
+# 1. Lihat jenis
+# 2. Tambahkan jenis
+# 3. Hapus jenis
+# """)
+#
+# jenis = input("pilihan : ")
+# if jenis == '1':
+#     programdb.viewjenis()
+# elif jenis == '2':
+#     askid = input("ID Jenis : ")
+#     askjenis = input("Jenis : ")
+#     askhargajenis = input("Harga Jenis : ")
+#     injenis = jenisLaundry.Tipe(askid, askjenis, askhargajenis)
+#     programdb.insertjenis(injenis.getidjenis, injenis.getjenis, injenis.gethargajenis)
+# else:
+#     ask = input("ID Jenis laundry : ")
+#     askid = jenisLaundry.Tipe(ask, "", "")
+#     programdb.deletejenis(askid.getidjenis)
 
-jenis = input("pilihan : ")
-if jenis == '1':
-    programdb.viewjenis()
-elif jenis == '2':
-    askid = input("ID Jenis : ")
-    askjenis = input("Jenis : ")
-    askhargajenis = input("Harga Jenis : ")
-    injenis = jenisLaundry.Tipe(askid, askjenis, askhargajenis)
-    programdb.insertjenis(injenis.getidjenis, injenis.getjenis, injenis.gethargajenis)
-else:
-    programdb.deletejenis()
+
 
 programdb.conn.close()
 

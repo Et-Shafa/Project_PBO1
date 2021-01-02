@@ -14,26 +14,25 @@ def viewjenis():
         print(f'{row[0]} | {row[1]} | {row[2]}')
 
 
-def insertjenis(id, jenis, harga):
-    # askid = input("ID Jenis : ")
-    # askjenis = input("Jenis : ")
-    # askhargajenis = input("Harga Jenis : ")
-    # injenis = jenislaundry.Tipe(askid, askjenis, askhargajenis)
+def insertjenis(idinsr, jenis, harga):
     res = conn.execute(
-        "select * from jeniscuci where idjeniscuci = ? or jenis = ?", (id, jenis))
+        "select * from jeniscuci where idjeniscuci = ? or jenis = ?", (idinsr, jenis))
     if res.fetchone() is None:
-        conn.execute("insert into jeniscuci values (?,?,?)", (id, jenis, harga))
+        conn.execute("insert into jeniscuci values (?,?,?)", (idinsr, jenis, harga))
     conn.commit()
 
 
-def deletejenis():
-    ask = input("ID Jenis laundry : ")
-    # dltjenis = jenislaundry.Tipe()
-    conn.execute("DELETE FROM jeniscuci WHERE idjeniscuci = ?",
-                 (ask, ))
+def deletejenis(iddlt):
+    conn.execute("DELETE FROM jeniscuci WHERE idjeniscuci = ?", (iddlt, ))
     conn.commit()
 
 
+def inserttra(nama, nohp, tglterima, tglselesai, idjenis, jumlahberatjenis, totalhargajenis, totalpakaian, totalharga):
+    res = conn.execute(
+        "select * from transaksi where idjeniscuci = ? or jenis = ?", (id, jenis))
+    if res.fetchone() is None:
+        conn.execute("insert into transaksi values (?,?,?,?,?,?,?,?,?,?)", ("", nama, nohp, tglterima, tglselesai, idjenis, jumlahberatjenis, totalhargajenis, totalpakaian, totalharga))
+    conn.commit()
 
 # def updatejenis(): xxxxxxxxx
 #     inama = input("Nama data barang yang ingin di update : ")
@@ -42,10 +41,6 @@ def deletejenis():
 #     conn.execute(
 #         "UPDATE jeniscuci set harga = ?  WHERE nama_barang = ?", (iharga, inama))
 #     conn.commit()
-
-
-
-
 
 # def read():
 #     cursor = conn.cursor().execute("select * from barang")
