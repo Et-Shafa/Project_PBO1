@@ -12,7 +12,9 @@ while Start:
 --------------------------------
 1. Catat transaksi
 2. Jenis laundry
-3. Selesai
+3. Riwayat Transaksi
+4. Rekap
+5. Selesai
 """)
     ask = input("Pilihan : ")
     if ask == "1":
@@ -25,6 +27,7 @@ while Start:
     2. Lihat pelanggan
     3. Transaksi
     4. Menu utama
+    5. Selesai
     """)
             pilih = input("Pilihan: ")
             if pilih == "1":
@@ -32,7 +35,8 @@ while Start:
                 nohp = input("Nomor HP : ")
                 email = input("Email : ")
                 pelanggan = pelanggan.Pelanggan(nama, nohp, email)
-                programdb.insertpelanggan(pelanggan.getnama, pelanggan.getnohp, pelanggan.getemail)
+                programdb.insertpelanggan(
+                    pelanggan.getnama, pelanggan.getnohp, pelanggan.getemail)
             elif pilih == "2":
                 programdb.viewpelanggan()
             elif pilih == "3":
@@ -53,7 +57,8 @@ while Start:
                     idjenis = input("ID Jenis : ")
                     jumlahberat = float(input("Jumlah berat : "))
                     hargajenis = float(programdb.gethargajenis(idjenis))
-                    totalhargajenis = catat.Catat.totalhargajenis(1, jumlahberat, hargajenis)
+                    totalhargajenis = catat.Catat.totalhargajenis(
+                        1, jumlahberat, hargajenis)
                     print("Total harga jenis :", totalhargajenis)
                     arrjenis.append(idjenis)
                     arrhargajenis.append(hargajenis)
@@ -100,6 +105,7 @@ while Start:
     2. Tambahkan jenis
     3. Hapus jenis
     4. Menu utama
+    5. Selesai
     """)
 
             jenis = input("pilihan : ")
@@ -110,7 +116,8 @@ while Start:
                 askjenis = input("Jenis : ")
                 askhargajenis = input("Harga Jenis : ")
                 injenis = jenisLaundry.Tipe(askid, askjenis, askhargajenis)
-                programdb.insertjenis(injenis.getidjenis, injenis.getjenis, injenis.gethargajenis)
+                programdb.insertjenis(injenis.getidjenis,
+                                      injenis.getjenis, injenis.gethargajenis)
             elif jenis == '3':
                 ask = input("ID Jenis laundry : ")
                 askid = jenisLaundry.Tipe(ask, "", "")
@@ -121,10 +128,33 @@ while Start:
                 pass
 
     elif ask == "3":
+        print("""
+    \t 3. Riwayat Transaksi
+    --------------------------------
+    1. Harian
+    2. Mingguan
+    3. Bulanan
+    4. Tahunan
+    5. Menu utama
+    6. Selesai
+    """)
+
+    elif ask == "4":
+        print("""
+    \t 4. Riwayat Transaksi
+    --------------------------------
+    1. Harian
+    2. Mingguan
+    3. Bulanan
+    4. Tahunan
+    5. Menu utama
+    6. Selesai
+    """)
+
+    elif ask == "4":
         Start = False
     else:
         pass
 
 
 programdb.conn.close()
-

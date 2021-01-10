@@ -61,11 +61,11 @@ def inserttra(idpelanggan, tglterima, tglselesai, totalpakaian, idjenis, jumlahb
     conn.commit()
 
 
-# def gettransaksi():
-#     cursor = conn.cursor().execute(
-#         "select * from transaksi where tglterima <= '2021-01-20' and tglterima >= '2021-01-01'")
-#     for row in cursor:
-#         print(f'{row[0]} | {row[1]} | {row[2]}')
+def gettransaksi():
+    cursor = conn.cursor().execute(
+        "select * from transaksi where tglterima <= '2021-01-20' and tglterima >= '2021-01-01'")
+    for row in cursor:
+        print(f'{row[0]} | {row[1]} | {row[2]}')
 
 
 # print(gettransaksi())
