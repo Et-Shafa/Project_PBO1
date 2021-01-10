@@ -1,0 +1,12 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:Project_PBO}/laundryin.db",
+            "name": "laundryin",
+            "group": "project_pbo"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

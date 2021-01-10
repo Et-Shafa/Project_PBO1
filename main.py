@@ -19,13 +19,13 @@ while Start:
         startone = True
         while startone:
             print("""
-\t 1. Catat transaksi
---------------------------------
-1. Tambah pelanggan
-2. Lihat pelanggan
-3. Transaksi
-4. Menu utama
-""")
+    \t 1. Catat transaksi
+    --------------------------------
+    1. Tambah pelanggan
+    2. Lihat pelanggan
+    3. Transaksi
+    4. Menu utama
+    """)
             pilih = input("Pilihan: ")
             if pilih == "1":
                 nama = input("Nama : ")
@@ -61,9 +61,9 @@ while Start:
                     arrtotalhj.append(totalhargajenis)
                     totalHarga = totalHarga + totalhargajenis
                     print(""""
-Tambah ?
-\t 1. Ya
-\t 2. Tidak""")
+        Tambah ?
+        \t 1. Ya
+        \t 2. Tidak""")
                     tran = catat.Catat(tglselesai, totalpakaian)
                     programdb.inserttra(idpelanggan, tglterima, tran.gettglselesai, tran.getjumlahpakaian, idjenis,
                                         jumlahberat, totalhargajenis)
@@ -94,7 +94,7 @@ Tambah ?
         fourstart = True
         while fourstart:
             print("""
-    \t 4. Jenis Laundry
+    \t 2. Jenis Laundry
     --------------------------------
     1. Lihat jenis
     2. Tambahkan jenis
