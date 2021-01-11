@@ -100,13 +100,13 @@ Tambah ?
                     else:
                         tambah = False
                         print(totalHarga)
-                    print("""
+                print("""
 Pembayaran
     1. Lunas
     2. Belum bayar""")
-                    bayar = input("Pilihan = ")
-                    # menjalankan fungsi pay (ada di paling atas setelah import)
-                    pay(bayar)
+                bayar = input("Pilihan = ")
+                # menjalankan fungsi pay (ada di paling atas setelah import)
+                pay(bayar)
                 print("""
             NOTA || Laundry.in
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
