@@ -15,13 +15,16 @@ def pay(bayar):
         return 'inputan kurang tepat'
 
 
-selesai = True
-while selesai:
-    print("""
+print("""
 Pembayaran
     1. Lunas
     2. Belum bayar""")
-    bayar = input("Pilihan = ")
-    print(pay(bayar))
+bayar = input("Pilihan = ")
 
-tran = catat.Catat(tglselesai, totalpakaian, statusbayar)
+
+# print(pay(bayar))
+
+
+print("""lalalsl : {}""".format(pay(bayar)))
+
+# tran = catat.Catat(tglselesai, totalpakaian, statusbayar)

@@ -64,8 +64,8 @@ def gethargajenis(idjenis):
 
 # * memasukkan data transaksi
 def inserttra(idpelanggan, tglterima, tglselesai, totalpakaian, idjenis, jumlahberatjenis, totalhargajenis):
-    conn.execute("insert into transaksi values (?, ?, ?, ?, ?, ?, ?, ?, ?)", (None, idpelanggan,
-                                                                              tglterima, tglselesai, totalpakaian, idjenis, jumlahberatjenis, totalhargajenis))
+    conn.execute("insert into transaksi values (?, ?, ?, ?, ?, ?, ?, ?)", (None, idpelanggan,
+                                                                           tglterima, tglselesai, totalpakaian, idjenis, jumlahberatjenis, totalhargajenis))
     conn.commit()
 
 

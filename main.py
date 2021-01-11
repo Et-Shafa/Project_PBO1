@@ -5,18 +5,22 @@ import programdb as programdb
 from datetime import datetime as dt
 
 
-def pay(bayar):
+def pay(bayar):  # overload polimorphysm
     if bayar == "1":
-        return 'Lunas'
-    elif bayar == "2":
-        return 'Belum bayar'
+        tran.setstatusbayar = 'Lunas'
     else:
-        return 'inputan kurang tepat'
+        tran.setstatusbayar = 'Belum bayar'
 
 
+totalHarga = 0
+arrjenis = []
+arrhargajenis = []
+arrjumlahberatj = []
+arrtotalhj = []
 Start = True
+starttwo = True
 
-while Start:
+while Start:  # Perulangan Utama
     print("""
 --------------------------------------------------
                     Laundry.in
@@ -29,7 +33,7 @@ while Start:
     ask = input("Pilihan : ")
     if ask == "1":
         startone = True
-        while startone:
+        while startone:  # perulangan 1
             print("""
 --------------------------------------------------
         Laundry.in/ 1. Catat transaksi
@@ -68,11 +72,6 @@ while Start:
                 tglselesai = dt.strptime(tglselesai, '%d-%m-%Y')
                 totalpakaian = input("Total pakaian : ")
                 tambah = True
-                totalHarga = 0
-                arrjenis = []
-                arrhargajenis = []
-                arrjumlahberatj = []
-                arrtotalhj = []
                 while tambah:
                     print("------------------------------")
                     programdb.viewjenis()
@@ -92,7 +91,7 @@ while Start:
 Tambah ?
     1. Ya
     2. Tidak""")
-                    tran = catat.Catat(tglselesai, totalpakaian)
+                    tran = catat.Catat(tglselesai, totalpakaian, "none")
                     programdb.inserttra(idpelanggan, tglterima, tran.gettglselesai, tran.getjumlahpakaian, idjenis,
                                         jumlahberat, totalhargajenis)
                     pilihan = input("Pilihan : ")
@@ -106,8 +105,9 @@ Pembayaran
     1. Lunas
     2. Belum bayar""")
                     bayar = input("Pilihan = ")
-                    print(pay(bayar))
-                print(""""
+                    # menjalankan fungsi pay (ada di paling atas setelah import)
+                    pay(bayar)
+                print("""
             NOTA || Laundry.in
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Nama                : {}
@@ -117,11 +117,11 @@ Tanggal diterima    : {}
 Tanggal selesai     : {}
 Total pakaian       : {}
 Jenis               Harga jenis         Total berat         Total Harga jenis
-{}                  {}                  {}                  {}
-Total harga         : Rp{}
+{}          {}          {}          {}
+Total harga         : Rp {}
             """.format(programdb.getdatapelanggan(idpelanggan, 1), programdb.getdatapelanggan(idpelanggan, 2), programdb.getdatapelanggan(idpelanggan, 3), tglterima, tglselesai, totalpakaian, arrjenis, arrhargajenis, arrjumlahberatj, arrtotalhj, totalHarga))
-           print(""" 
-status pembayaran   : {}""".format(pay(bayar)))
+                print(""" 
+status pembayaran   : {}""".format(tran.getstatusbayar))
             elif pilih == "4":
                 startone = False
             elif pilih == "5":
@@ -131,8 +131,8 @@ status pembayaran   : {}""".format(pay(bayar)))
                 pass
 
     elif ask == "2":
-        starttwo = True
-        while starttwo:
+
+        while starttwo:  # perulangan
             print("""
 --------------------------------------------------
           Laundry.in/ 2. Jenis Laundry

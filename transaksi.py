@@ -1,8 +1,9 @@
 class Catat:
 
-    def __init__(self, tglselesai, jumlahpakaian):
+    def __init__(self, tglselesai, jumlahpakaian, statusbayar):
         self.tglselesai = tglselesai
         self.jumlahpakaian = jumlahpakaian
+        self.statusbayar = statusbayar
 
     @property
     def settglselesai(self):
@@ -39,3 +40,19 @@ class Catat:
     def totalhargajenis(self, beratjenis, harga):
         totalharga = beratjenis*harga
         return totalharga
+
+    @property
+    def setstatusbayar(self):
+        pass
+
+    @property
+    def getstatusbayar(self):
+        pass
+
+    @setstatusbayar.setter
+    def setstatusbayar(self, input):
+        self.statusbayar = input
+
+    @getstatusbayar.getter
+    def getstatusbayar(self):
+        return self.statusbayar
