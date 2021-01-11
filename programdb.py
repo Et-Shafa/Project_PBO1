@@ -74,7 +74,8 @@ def gettransaksi(tanggalawal, tanggalakhir):
     cursor = conn.cursor().execute(
         "select * from transaksi where tglterima >= ? and tglterima <= ?", (tanggalawal, tanggalakhir))
     for row in cursor:
-        print(f'''{row[0]} | {row[1]} | {row[2]}''')
+        print(
+            f'''{row[0]} | {row[1]} | {row[2]} | {row[3]} | {row[4]} | {row[5]} | {row[6]} | {row[7]}''')
 
 
 # * melihat total pemasukan dalam jangka tertentu

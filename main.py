@@ -194,7 +194,7 @@ Laundry.in/2. Jenis Laundry/2. Tambahkan jenis
         print("format inputan : yy-mm-dd || Contoh inputan : 2021-01-01")
         awal = input("Dari : ")
         akhir = input("Sampai : ")
-        programdb.rekaptransaksi(awal, akhir)
+        print(programdb.rekaptransaksi(awal, akhir))
 
     elif ask == "5":
         Start = False
