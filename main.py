@@ -4,7 +4,7 @@ import jenislaundry as jenisLaundry
 import programdb as programdb
 from datetime import datetime as dt
 
-  def pay(bayar):
+def pay(bayar):
        if bayar == "1":
             return 'Lunas'
         elif bayar == "2":
