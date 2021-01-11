@@ -103,6 +103,7 @@ Total pakaian       : {}
 Jenis               Harga jenis         Total berat         Total Harga jenis
 {}                  {}                  {}                  {}
 Total harga         : Rp{}
+status pembayaran   : {}
             """.format(programdb.getdatapelanggan(idpelanggan, 1), programdb.getdatapelanggan(idpelanggan, 2), programdb.getdatapelanggan(idpelanggan, 3), tglterima, tglselesai, totalpakaian, arrjenis, arrhargajenis, arrjumlahberatj, arrtotalhj, totalHarga))
             elif pilih == "4":
                 startone = False
