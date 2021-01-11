@@ -1,3 +1,4 @@
+
 class Pelanggan:
 
     def __init__(self, nama, nohp, email):

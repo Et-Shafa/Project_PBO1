@@ -6,12 +6,14 @@ db = "laundryin.db"
 conn = sqlite3.connect(db)
 
 
+# * melihat daftar jenis laundry
 def viewjenis():
     cursor = conn.cursor().execute("select * from jeniscuci")
     for row in cursor:
         print(f'{row[0]} | {row[1]} | {row[2]}')
 
 
+# * memasukkan data jenis laundry
 def insertjenis(idinsr, jenis, harga):
     res = conn.execute(
         "select * from jeniscuci where idjeniscuci = ? or jenis = ?", (idinsr, jenis))
@@ -21,11 +23,13 @@ def insertjenis(idinsr, jenis, harga):
     conn.commit()
 
 
+# * mengapus jenis laundry berdasarkan id
 def deletejenis(iddlt):
     conn.execute("DELETE FROM jeniscuci WHERE idjeniscuci = ?", (iddlt, ))
     conn.commit()
 
 
+# * memasukkan data pelanggan
 def insertpelanggan(nama, nohp, email):
     res = conn.execute(
         "select * from pelanggan where nama = ?", (nama, ))
@@ -35,12 +39,14 @@ def insertpelanggan(nama, nohp, email):
     conn.commit()
 
 
+# *melihat data pelanggan
 def viewpelanggan():
     cursor = conn.cursor().execute("select * from pelanggan")
     for row in cursor:
         print(f'{row[0]} | {row[1]} | {row[2]} | {row[3]}')
 
 
+# * mengambil data pelanggan pada index tertentu
 def getdatapelanggan(idpelanggan, index):
     cursor = conn.cursor().execute(
         "select * from pelanggan where idpelanggan = ?", (idpelanggan, ))
@@ -48,6 +54,7 @@ def getdatapelanggan(idpelanggan, index):
         return (f'{row[index]}')
 
 
+# * mengambil data harga jenis pada index tertentu
 def gethargajenis(idjenis):
     cursor = conn.cursor().execute(
         "select * from jeniscuci where idjeniscuci = ?", (idjenis, ))
@@ -55,19 +62,22 @@ def gethargajenis(idjenis):
         return (f'{row[2]}')
 
 
+# * memasukkan data transaksi
 def inserttra(idpelanggan, tglterima, tglselesai, totalpakaian, idjenis, jumlahberatjenis, totalhargajenis):
-    conn.execute("insert into transaksi values (?, ?, ?, ?, ?, ?, ?, ?)", (None, idpelanggan,
-                                                                           tglterima, tglselesai, totalpakaian, idjenis, jumlahberatjenis, totalhargajenis))
+    conn.execute("insert into transaksi values (?, ?, ?, ?, ?, ?, ?, ?, ?)", (None, idpelanggan,
+                                                                              tglterima, tglselesai, totalpakaian, idjenis, jumlahberatjenis, totalhargajenis))
     conn.commit()
 
 
+# * melihat data transaksi dalam jangka waktu tertentu
 def gettransaksi(tanggalawal, tanggalakhir):
     cursor = conn.cursor().execute(
         "select * from transaksi where tglterima >= ? and tglterima <= ?", (tanggalawal, tanggalakhir))
     for row in cursor:
-        print(f'{row[0]} | {row[1]} | {row[2]}')
+        print(f'''{row[0]} | {row[1]} | {row[2]}''')
 
 
+# * melihat total pemasukan dalam jangka tertentu
 def rekaptransaksi(tanggalawal, tanggalakhir):
     cursor = conn.cursor().execute(
         "select * from transaksi where tglterima >= ? and tglterima <= ?", (tanggalawal, tanggalakhir))
@@ -75,37 +85,6 @@ def rekaptransaksi(tanggalawal, tanggalakhir):
     for row in cursor:
         total += int(row[7])
     return total
-    # print(total)
-
-    # print(f'{row[0]} | {row[1]} | {row[2]}')
-print(rekaptransaksi("2021-01-01", "2021-02-01"))
-
-# def updatejenis(): xxxxxxxxx
-#     inama = input("Nama data barang yang ingin di update : ")
-#     iharga = int(input("Harga baru : "))
-#     # barang1 = item.Barang(inama, iharga)
-#     conn.execute(
-#         "UPDATE jeniscuci set harga = ?  WHERE nama_barang = ?", (iharga, inama))
-#     conn.commit()
-
-# def read():
-#     cursor = conn.cursor().execute("select * from barang")
-#     for row in cursor:
-#         print(f'{row[0]}, {row[1]}, {row[2]}')
 
 
-# def readByName():
-#     asknama = input("Cari data berdasar nama : ")
-#     cursor = conn.cursor().execute(
-#         "select * from barang where nama_barang = ?", (asknama, ))
-#     for row in cursor:
-#         print(f'{row[0]}, {row[1]}, {row[2]}')
-
-# conn.execute("insert into jeniscuci values (?,?,?)",
-#              ("jenis04", "coba", 2000))
-# conn.commit()
-
-# insertjenis()
-# deletejenis()
-# viewjenis()
 # conn.close()
