@@ -61,14 +61,24 @@ def inserttra(idpelanggan, tglterima, tglselesai, totalpakaian, idjenis, jumlahb
     conn.commit()
 
 
-def gettransaksi():
+def gettransaksi(tanggalawal, tanggalakhir):
     cursor = conn.cursor().execute(
-        "select * from transaksi where tglterima <= '2021-01-20' and tglterima >= '2021-01-01'")
+        "select * from transaksi where tglterima >= ? and tglterima <= ?", (tanggalawal, tanggalakhir))
     for row in cursor:
         print(f'{row[0]} | {row[1]} | {row[2]}')
 
 
-# print(gettransaksi())
+def rekaptransaksi(tanggalawal, tanggalakhir):
+    cursor = conn.cursor().execute(
+        "select * from transaksi where tglterima >= ? and tglterima <= ?", (tanggalawal, tanggalakhir))
+    total = 0
+    for row in cursor:
+        total += int(row[7])
+    return total
+    # print(total)
+
+    # print(f'{row[0]} | {row[1]} | {row[2]}')
+print(rekaptransaksi("2021-01-01", "2021-02-01"))
 
 # def updatejenis(): xxxxxxxxx
 #     inama = input("Nama data barang yang ingin di update : ")

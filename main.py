@@ -96,8 +96,8 @@ while Start:
                 pass
 
     elif ask == "2":
-        fourstart = True
-        while fourstart:
+        starttwo = True
+        while starttwo:
             print("""
     \t 2. Jenis Laundry
     --------------------------------
@@ -123,35 +123,77 @@ while Start:
                 askid = jenisLaundry.Tipe(ask, "", "")
                 programdb.deletejenis(askid.getidjenis)
             elif jenis == '4':
-                fourstart = False
+                starttwo = False
             else:
                 pass
 
     elif ask == "3":
-        print("""
-    \t 3. Riwayat Transaksi
-    --------------------------------
-    1. Harian
-    2. Mingguan
-    3. Bulanan
-    4. Tahunan
-    5. Menu utama
-    6. Selesai
-    """)
+        print("format inputan : yy-mm-dd || Contoh inputan : 2021-01-01")
+        awal = input("Dari : ")
+        akhir = input("Sampai : ")
+        # awal = dt.strptime(awal, '%Y-%m-%d')
+        # akhir = dt.strptime(akhir, '%Y-%m-%d')
+        programdb.gettransaksi(awal, akhir)
+    #     startthree = True
+    #     while startthree:
+    #         print(
+    #             """\t 3. Riwayat Transaksi
+    # --------------------------------
+    # 1. Harian
+    # 2. Mingguan
+    # 3. Bulanan
+    # 4. Tahunan
+    # 5. Menu utama
+    # 6. Selesai
+    # """)
+    #         pilih = input("pilihan : ")
+    #         if pilih == "1":
+    #             pass
+    #         elif pilih == "2":
+    #             pass
+    #         elif pilih == "3":
+    #             pass
+    #         elif pilih == "4":
+    #             pass
+    #         elif pilih == "5":
+    #             startthree = False
+    #         elif pilih == "6":
+    #             startthree = False
+    #             Start = False
 
     elif ask == "4":
-        print("""
-    \t 4. Riwayat Transaksi
-    --------------------------------
-    1. Harian
-    2. Mingguan
-    3. Bulanan
-    4. Tahunan
-    5. Menu utama
-    6. Selesai
-    """)
+        pass
+        # print("format inputan : yy-mm-dd || Contoh inputan : 2021-01-01")
+        # awal = input("Dari : ")
+        # akhir = input("Sampai : ")
+    #     startfour = True
+    #     while startfour:
+    #         print("""
+    # \t 4. Riwayat Transaksi
+    # --------------------------------
+    # 1. Harian
+    # 2. Mingguan
+    # 3. Bulanan
+    # 4. Tahunan
+    # 5. Menu utama
+    # 6. Selesai
+    # """)
+    #         pilih = input("pilihan : ")
+    #         if pilih == "1":
+    #             pass
+    #         elif pilih == "2":
+    #             pass
+    #         elif pilih == "3":
+    #             pass
+    #         elif pilih == "4":
+    #             pass
+    #         elif pilih == "5":
+    #             startfour = False
+    #         elif pilih == "6":
+    #             startfour = False
+    #             Start = False
 
-    elif ask == "4":
+    elif ask == "5":
         Start = False
     else:
         pass
