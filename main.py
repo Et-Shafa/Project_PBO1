@@ -4,6 +4,13 @@ import jenislaundry as jenisLaundry
 import programdb as programdb
 from datetime import datetime as dt
 
+ def pay(bayar):
+    if bayar == "1":
+        return 'Lunas'
+    elif bayar == "2":
+        return 'Belum bayar'
+    else:
+        return 'inputan kurang tepat'
 Start = True
 
 while Start:
@@ -91,6 +98,17 @@ Tambah ?
                     else:
                         tambah = False
                         print(totalHarga)
+                       
+
+
+selesai = True
+while selesai:
+    print("""
+Pembayaran
+    1. Lunas
+    2. Belum bayar""")
+    bayar = input("Pilihan = ")
+    print(pay(bayar))
                 print(""""
             NOTA || Laundry.in
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
