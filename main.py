@@ -101,8 +101,6 @@ Tambah ?
                     else:
                         tambah = False
                         print(totalHarga)
-                selesai = True
-                while selesai:
                     print("""
 Pembayaran
     1. Lunas
@@ -123,7 +121,7 @@ Jenis               Harga jenis         Total berat         Total Harga jenis
 Total harga         : Rp{}
             """.format(programdb.getdatapelanggan(idpelanggan, 1), programdb.getdatapelanggan(idpelanggan, 2), programdb.getdatapelanggan(idpelanggan, 3), tglterima, tglselesai, totalpakaian, arrjenis, arrhargajenis, arrjumlahberatj, arrtotalhj, totalHarga))
            print(""" 
-status pembayaran   : {}""")
+status pembayaran   : {}""".format(pay(bayar)))
             elif pilih == "4":
                 startone = False
             elif pilih == "5":
